@@ -78,17 +78,25 @@ public class Match {
 					continue;
 				}
 				
-				int score = Integer.parseInt(nextBall);
-				team.nextBall(score);
-//				System.out.println(p1.name + " " + score);
-				p1.nextBall(score);
-				
-				if(score % 2 == 1)
+				try {
+					int score = Integer.parseInt(nextBall);
+					team.nextBall(score);
+//					System.out.println(p1.name + " " + score);
+					p1.nextBall(score);
+					
+					if(score % 2 == 1)
+					{
+						// Swapping the Players
+						Player temp = p1;
+						p1 = p2;
+						p2 = temp;
+					}
+				}
+				catch(Exception e)
 				{
-					// Swapping the Players
-					Player temp = p1;
-					p1 = p2;
-					p2 = temp;
+					System.out.println("Please enter a valid input W, Wd, Nb or Runs(1-6)");
+					ball--;
+					continue;
 				}
 				
 //				System.out.println(p1 + " " + p2);
